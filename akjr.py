@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 # Header
-st.header('Nugroho :sparkles:')
+st.header('aksamla :sparkles:')
 st.subheader('Plot')
 
 # Generating x values from -2 to 2*pi with 1800 points
