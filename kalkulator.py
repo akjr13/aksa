@@ -6,8 +6,8 @@ st.header('Aksamala :sparkles:')
 # Subheader
 st.subheader('Kalkulator')
 
-# Membuat dua kolom
-c1, c2 = st.columns(2)
+# Membuat tiga kolom
+c1, c2, c3 = st.columns(3)
 
 # Kolom pertama
 with c1:
@@ -15,10 +15,12 @@ with c1:
 
 # Kolom kedua
 with c2:
-    num2 = st.number_input('Masukkan angka kedua')
+    # Pilih operasi
+    operation = st.selectbox('Pilih operasi', ('+', '-', 'x', '/'))
 
-# Pilih operasi
-operation = st.selectbox('Pilih operasi', ('+', '-', 'x', '/'))
+# Kolom ketiga
+with c3:
+    num2 = st.number_input('Masukkan angka kedua')
 
 # Fungsi untuk melakukan operasi
 def calculate(num1, num2, operation):
@@ -35,7 +37,6 @@ def calculate(num1, num2, operation):
             result = "Error: Pembagian dengan nol"
     return result
 
-# Tombol untuk menghitung hasil
-if st.button('Hitung'):
-    result = calculate(num1, num2, operation)
-    st.write('Hasil:', result)
+# Menampilkan hasil perhitungan
+result = calculate(num1, num2, operation)
+st.write('Hasil:', result)
