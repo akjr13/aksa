@@ -36,7 +36,7 @@ def calculate(x , y, operation):
 result = calculate(x, y, operation)
 
 # Menampilkan hasil dalam kolom terpisah
-st.text_area('Hasil:', value=result, height=50)
+st.text_area('Hasil:', value=result, height=25)
 
 # Menampilkan keterangan hak cipta
 st.caption('Copyright © Aksamala.A/210322607297')
