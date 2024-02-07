@@ -1,9 +1,10 @@
 import streamlit as st
 
+# Menampilkan header di tengah
 st.markdown("<h1 style='text-align: center;'>Aksamala 🔥</h1>", unsafe_allow_html=True)
 st.subheader('Kalkulator')
 
-
+# Membuat tiga kolom
 c1, c2, c3 = st.columns(3)
 
 with c1:
@@ -24,13 +25,17 @@ def calculate(x , y, operation):
     elif operation == 'x':
         result = x * y
     elif operation == '/':
-        if num2 != 0:  # Menghindari pembagian dengan nol
+        if y != 0:  # Menghindari pembagian dengan nol
             result = x / y
         else:
             result = "Error: Pembagian dengan nol"
     return result
 
-result = calculate( x , y, operation)
-st.write('Hasil:', result)
+# Menghitung hasil
+result = calculate(x, y, operation)
 
-st.caption('copyright © Aksamala.A/210322607297')
+# Menampilkan hasil dalam kotak atau area terpisah
+st.text('Hasil: {}'.format(result))
+
+# Menampilkan keterangan hak cipta
+st.caption('Copyright © Aksamala.A/210322607297')
