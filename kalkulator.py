@@ -5,7 +5,7 @@ st.markdown("<h1 style='text-align: center;'>Aksamala 🔥</h1>", unsafe_allow_h
 st.subheader('Kalkulator')
 
 # Membuat empat kolom
-c1, c2, c3, c4 = st.columns(4)
+c1, c2, c3 = st.columns(3)
 
 with c1:
     x = st.number_input('Masukkan angka pertama', step=1)
@@ -17,9 +17,6 @@ with c2:
 with c3:
     y = st.number_input('Masukkan angka kedua', step=1)
 
-with c4:
-    # Menampilkan hasil dalam kolom terpisah
-    st.text_area('Hasil:', value='', height=50)
 
 def calculate(x , y, operation):
     if operation == '+':
