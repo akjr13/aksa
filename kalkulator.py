@@ -32,4 +32,4 @@ def calculate(x , y, operation):
 result = calculate( x , y, operation)
 st.write('Hasil:', result)
 
-st.caption('Aksamala Arfendi')
+st.caption('copyright © Aksamala.A/210322607297')
