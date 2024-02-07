@@ -4,7 +4,7 @@ import streamlit as st
 st.header('Aksamala :sparkles:')
 
 # Subheader
-st.subheader('Plot')
+st.subheader('Kalkulator')
 
 # Membuat dua kolom
 c1, c2 = st.columns(2)
