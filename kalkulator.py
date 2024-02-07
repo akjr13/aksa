@@ -1,8 +1,8 @@
 import streamlit as st
 
-st.header('Aksamala :fire:')
+st.markdown("<h1 style='text-align: center;'>st.header('Aksamala :fire:')</h1>", unsafe_allow_html=True)
 st.subheader('Kalkulator')
-st.markdown("<h1 style='text-align: center;'>Header</h1>", unsafe_allow_html=True)
+
 
 c1, c2, c3 = st.columns(3)
 
