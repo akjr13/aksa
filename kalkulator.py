@@ -11,7 +11,7 @@ c1, c2, c3 = st.columns(3)
 
 # Kolom pertama
 with c1:
-    num1 = st.number_input('Masukkan angka pertama')
+    num1 = st.number_input('Masukkan angka pertama', step=1)
 
 # Kolom kedua
 with c2:
@@ -20,9 +20,9 @@ with c2:
 
 # Kolom ketiga
 with c3:
-    num2 = st.number_input('Masukkan angka kedua')
+    num2 = st.number_input('Masukkan angka kedua', step=1)
 
-# Fungsi untuk melakukan operasi
+
 def calculate(num1, num2, operation):
     if operation == '+':
         result = num1 + num2
@@ -37,6 +37,7 @@ def calculate(num1, num2, operation):
             result = "Error: Pembagian dengan nol"
     return result
 
-# Menampilkan hasil perhitungan
 result = calculate(num1, num2, operation)
 st.write('Hasil:', result)
+
+st.caption('Aksamala Arfendi')
