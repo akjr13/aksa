@@ -4,8 +4,8 @@ import streamlit as st
 st.markdown("<h1 style='text-align: center;'>Aksamala 🔥</h1>", unsafe_allow_html=True)
 st.subheader('Kalkulator')
 
-# Membuat tiga kolom
-c1, c2, c3 = st.columns(3)
+# Membuat empat kolom
+c1, c2, c3, c4 = st.columns(4)
 
 with c1:
     x = st.number_input('Masukkan angka pertama', step=1)
@@ -16,6 +16,10 @@ with c2:
 
 with c3:
     y = st.number_input('Masukkan angka kedua', step=1)
+
+with c4:
+    # Menampilkan hasil dalam kolom terpisah
+    st.text_area('Hasil:', value='', height=50)
 
 def calculate(x , y, operation):
     if operation == '+':
@@ -34,8 +38,8 @@ def calculate(x , y, operation):
 # Menghitung hasil
 result = calculate(x, y, operation)
 
-# Menampilkan hasil dalam kotak atau area terpisah
-st.text('Hasil: {}'.format(result))
+# Menampilkan hasil dalam kolom terpisah
+st.text_area('Hasil:', value=result, height=50)
 
 # Menampilkan keterangan hak cipta
 st.caption('Copyright © Aksamala.A/210322607297')
