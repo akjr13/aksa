@@ -21,8 +21,11 @@ st.markdown("<h1 style='text-align: center;'>Ucapan Tahun Pacar 💖</h1>", unsa
 st.subheader('Masukkan informasi pacar dan tanggal jadian:')
 
 # Input nama pacar
-pacar_name = st.text_input('Nama Pacar:')
-date = st.date_input('Tanggal Jadian')
+pacar_name_option = st.radio('Pilih Nama Pacar:', ('Pacar Saya', 'Nama Pacar Saya'))
+if pacar_name_option == 'Nama Pacar Saya':
+    pacar_name = st.text_input('Nama Pacar:')
+else:
+    pacar_name = 'Nama Pacar Saya'
 
 # Input nama pengguna (nama teman)
 friend_name = st.text_input('Nama Teman:')
@@ -30,6 +33,9 @@ friend_name = st.text_input('Nama Teman:')
 # Menampilkan input untuk keinginan asisten
 st.subheader('Keinginan dari Asisten:')
 assistant_wish = st.text_area('Keinginan:', value="Semoga hubungan kalian semakin langgeng dan bahagia!")
+
+# Membuat input untuk tanggal jadian
+date = st.date_input('Tanggal Jadian')
 
 # Menghitung tahun dari tanggal jadian hingga sekarang
 if date:
