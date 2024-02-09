@@ -1,40 +1,40 @@
 import streamlit as st
 from datetime import datetime
 
-def generate_anniversary_message(pacar_name, years):
-    # Daftar ucapan selamat tahun pacar
-    anniversary_messages = [
-        f"Selamat {years} tahun bersama, {pacar_name}! Semoga cinta kita semakin kuat dan abadi.",
-        f"Wah, sudah {years} tahun ya kita bersama, {pacar_name}! Setiap momen bersamamu sangat berharga.",
-        f"Hari ini adalah hari spesial, {years} tahun bersama, {pacar_name}! Terima kasih telah menjadi bagian dari hidupku.",
-        f"Hari ini adalah perayaan {years} tahun cinta kita, {pacar_name}. Aku sangat bersyukur memiliki kamu di sampingku.",
-        f"Tak terasa sudah {years} tahun kita berdua, {pacar_name}. Semoga cinta kita selalu menyala dan tak pernah pudar.",
-        f"Happy anniversary yang ke-{years}, {pacar_name}! Semoga tahun ini penuh dengan kebahagiaan dan keberkahan."
+def generate_birthday_message(friend_name, age):
+    # Daftar ucapan selamat ulang tahun
+    birthday_messages = [
+        f"Selamat ulang tahun, {friend_name}! Semoga hari ulang tahunmu penuh dengan kebahagiaan dan keceriaan.",
+        f"Wah, hari ini ulang tahun {friend_name}! Semoga semua impianmu tercapai di usia yang baru ini.",
+        f"Happy birthday, {friend_name}! Semoga setiap momen di hari ini menjadi kenangan yang tak terlupakan.",
+        f"Selamat ulang tahun yang ke-{age}, {friend_name}! Semoga cinta dan kebahagiaan selalu menyertaimu.",
+        f"Ulang tahun yang penuh kebahagiaan untukmu, {friend_name}! Semoga usiamu semakin berkah dan indah.",
+        f"Happy birthday, {friend_name}! Semoga tahun ini menjadi awal dari petualangan baru yang menyenangkan."
     ]
-    # Memilih ucapan sesuai dengan tahun pacar
-    message = anniversary_messages[min(len(anniversary_messages)-1, years-1)]
+    # Memilih ucapan sesuai dengan usia
+    message = birthday_messages[min(len(birthday_messages)-1, age-1)]
     return message
 
 # Menampilkan header di tengah
-st.markdown("<h1 style='text-align: center;'>Ucapan Tahun Pacar 💖</h1>", unsafe_allow_html=True)
-st.subheader('Masukkan informasi pacar dan tanggal jadian:')
+st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun 🎉</h1>", unsafe_allow_html=True)
+st.subheader('Masukkan informasi teman dan tanggal lahir:')
 
-# Input nama pacar
-pacar_name = st.text_input('Nama Pacar:')
-date = st.date_input('Tanggal Jadian')
+# Input nama teman
+friend_name = st.text_input('Nama Teman:')
+birthdate = st.date_input('Tanggal Lahir')
 
-# Menghitung tahun dari tanggal jadian hingga sekarang
-if date:
+# Menghitung usia teman dari tanggal lahir hingga sekarang
+if birthdate:
     current_date = datetime.now().date()
-    years = current_date.year - date.year
-    if (current_date.month, current_date.day) < (date.month, date.day):
-        years -= 1
-    st.write(f"Tahun Pacar: {years} tahun")
+    age = current_date.year - birthdate.year
+    if (current_date.month, current_date.day) < (birthdate.month, birthdate.day):
+        age -= 1
+    st.write(f"Usia Teman: {age} tahun")
 
     # Tombol untuk menghasilkan ucapan
     if st.button('Generate Ucapan'):
-        if pacar_name:
-            anniversary_message = generate_anniversary_message(pacar_name, years)
+        if friend_name:
+            birthday_message = generate_birthday_message(friend_name, age)
         else:
-            anniversary_message = generate_anniversary_message("Pacar", years)
-        st.write(anniversary_message)
+            birthday_message = generate_birthday_message("Teman", age)
+        st.write(birthday_message)
