@@ -1,4 +1,5 @@
 import streamlit as st
+from datetime import datetime
 
 def generate_anniversary_message(years):
     # Daftar ucapan selamat tahun pacar
@@ -16,12 +17,18 @@ def generate_anniversary_message(years):
 
 # Menampilkan header di tengah
 st.markdown("<h1 style='text-align: center;'>Ucapan Tahun Pacar 💖</h1>", unsafe_allow_html=True)
-st.subheader('Masukkan jumlah tahun pacar:')
+st.subheader('Masukkan tanggal jadian:')
+date = st.date_input('Tanggal Jadian')
 
-# Membuat input untuk tahun pacar
-years = st.number_input('Tahun:', min_value=1, max_value=100, step=1)
+# Menghitung tahun dari tanggal jadian hingga sekarang
+if date:
+    current_date = datetime.now().date()
+    years = current_date.year - date.year
+    if (current_date.month, current_date.day) < (date.month, date.day):
+        years -= 1
+    st.write(f"Tahun Pacar: {years} tahun")
 
-# Tombol untuk menghasilkan ucapan
-if st.button('Generate Ucapan'):
-    anniversary_message = generate_anniversary_message(years)
-    st.write(anniversary_message)
+    # Tombol untuk menghasilkan ucapan
+    if st.button('Generate Ucapan'):
+        anniversary_message = generate_anniversary_message(years)
+        st.write(anniversary_message)
