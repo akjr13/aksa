@@ -18,34 +18,24 @@ def generate_birthday_message(name, age, assistant_name, assistant_wish):
 
 # Menampilkan header di tengah
 st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun ke Pacar 🎉</h1>", unsafe_allow_html=True)
-st.subheader('Masukkan informasi pacar dan tanggal lahir:')
+st.subheader('Pilih nama pacar:')
 
-# Input nama pacar
-pacar_name_option = st.radio('Pilih Nama Pacar:', ('aksa ganteng aja ', 'aksa ganteng banget'))
-if pacar_name_option == 'Nama Pacar Saya':
-    pacar_name = st.text_input('Nama Pacar:')
-else:
-    pacar_name = 'Nama Pacar Saya'
-
-# Input tanggal lahir pacar
-birthdate = st.date_input('Tanggal Lahir')
+# Pilihan nama pacar
+pacar_name_option = st.radio('Pilih Nama Pacar:', ('Aksa Ganteng Aja', 'Aksa Ganteng Banget'))
 
 # Menampilkan input untuk keinginan asisten
 st.subheader('Keinginan dari Asisten:')
 assistant_wish = st.text_area('Keinginan:', value="Selamat ulang tahun yang indah!")
 
 # Menghitung usia pacar dari tanggal lahir hingga sekarang
-if birthdate:
-    current_date = datetime.now().date()
-    age = current_date.year - birthdate.year
-    if (current_date.month, current_date.day) < (birthdate.month, birthdate.day):
-        age -= 1
-    st.write(f"Usia Pacar: {age} tahun")
+birthdate = datetime.now()  # Mengganti birthdate dengan datetime saat ini
+current_date = datetime.now().date()
+age = current_date.year - birthdate.year
+if (current_date.month, current_date.day) < (birthdate.month, birthdate.day):
+    age -= 1
+st.write(f"Usia Pacar: {age} tahun")
 
-    # Tombol untuk menghasilkan ucapan
-    if st.button('Generate Ucapan'):
-        if pacar_name:
-            birthday_message = generate_birthday_message(pacar_name, age, "Asisten", assistant_wish)
-        else:
-            birthday_message = generate_birthday_message("Pacar", age, "Asisten", assistant_wish)
-        st.write(birthday_message)
+# Tombol untuk menghasilkan ucapan
+if st.button('Generate Ucapan'):
+    birthday_message = generate_birthday_message(pacar_name_option, age, "Asisten", assistant_wish)
+    st.write(birthday_message)
