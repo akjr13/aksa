@@ -16,8 +16,6 @@ age = st.number_input('Usia Pacar:', min_value=1, max_value=150, value=1)
 # Input keinginan dari Anda
 wish = st.text_area('Keinginan dari Anda:')
 
-# Input harapan Anda untuk masa depan bersama
-future_wish = st.text_area('Harapan Anda untuk Masa Depan:')
 
 # Tombol untuk menampilkan ucapan
 if st.button('Tampilkan Ucapan'):
