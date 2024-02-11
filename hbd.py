@@ -5,13 +5,12 @@ def generate_birthday_message(name, age):
     return f"Selamat ulang tahun yang ke-{age}, {name}! Semoga hari ulang tahunmu penuh dengan kebahagiaan dan keceriaan."
 
 # Menampilkan header di tengah
-st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun untuk Pacar 🎂💖</h1>", unsafe_allow_html=True)
-st.subheader('Masukkan informasi ulang tahun pacar:')
+st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun Firnanda valen 💖</h1>", unsafe_allow_html=True)
 
-# Input nama pacar
+# Input nama kamu sayang
 name = st.text_input('Nama Pacar:')
 
-# Input usia pacar
+# Input usia kamu sayang
 age = st.number_input('Usia Pacar:', min_value=1, max_value=150, value=1)
 
 # Tombol untuk menampilkan ucapan
