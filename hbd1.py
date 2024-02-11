@@ -1,41 +1,23 @@
 import streamlit as st
-from datetime import datetime
 
-def generate_birthday_message(name, age, assistant_name, assistant_wish):
-    # Daftar ucapan selamat ulang tahun
-    birthday_messages = [
-        f"Selamat ulang tahun, {name}! Semoga hari ulang tahunmu penuh dengan kebahagiaan dan keceriaan. - {assistant_name}",
-        f"Wah, hari ini ulang tahun {name}! Semoga semua impianmu tercapai di usia yang baru ini. - {assistant_name}",
-        f"Happy birthday, {name}! Semoga setiap momen di hari ini menjadi kenangan yang tak terlupakan. - {assistant_name}",
-        f"Selamat ulang tahun yang ke-{age}, {name}! Semoga cinta dan kebahagiaan selalu menyertaimu. - {assistant_name}",
-        f"Ulang tahun yang penuh kebahagiaan untukmu, {name}! Semoga usiamu semakin berkah dan indah. - {assistant_name}",
-        f"Happy birthday, {name}! Semoga tahun ini menjadi awal dari petualangan baru yang menyenangkan. - {assistant_name}",
-        f"{assistant_wish} - {assistant_name}"
-    ]
-    # Memilih ucapan sesuai dengan usia
-    message = birthday_messages[min(len(birthday_messages)-1, age-1)]
-    return message
+# Membuat fungsi untuk menghasilkan ucapan ulang tahun untuk pacar
+def generate_birthday_message(name, age):
+    return f"Selamat ulang tahun yang ke-{age}, {name}! Semoga hari ulang tahunmu penuh dengan kebahagiaan dan keceriaan."
 
 # Menampilkan header di tengah
-st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun ke Pacar 🎉</h1>", unsafe_allow_html=True)
-st.subheader('Pilih nama pacar:')
+st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun untuk Pacar 🎂💖</h1>", unsafe_allow_html=True)
+st.subheader('Masukkan informasi ulang tahun pacar:')
 
-# Pilihan nama pacar
-pacar_name_option = st.radio('Pilih Nama Pacar:', ('Aksa Ganteng Aja', 'Aksa Ganteng Banget'))
+# Input nama pacar
+name = st.text_input('Nama Pacar:')
 
-# Menampilkan input untuk keinginan asisten
-st.subheader('Keinginan dari Asisten:')
-assistant_wish = st.text_area('Keinginan:', value="Selamat ulang tahun yang indah!")
+# Input usia pacar
+age = st.number_input('Usia Pacar:', min_value=1, max_value=150, value=1)
 
-# Menghitung usia pacar dari tanggal lahir hingga sekarang
-birthdate = datetime.now()  # Mengganti birthdate dengan datetime saat ini
-current_date = datetime.now().date()
-age = current_date.year - birthdate.year
-if (current_date.month, current_date.day) < (birthdate.month, birthdate.day):
-    age -= 1
-st.write(f"Usia Pacar: {age} tahun")
-
-# Tombol untuk menghasilkan ucapan
-if st.button('Generate Ucapan'):
-    birthday_message = generate_birthday_message(pacar_name_option, age, "Asisten", assistant_wish)
-    st.write(birthday_message)
+# Tombol untuk menampilkan ucapan
+if st.button('Tampilkan Ucapan'):
+    if name:
+        birthday_message = generate_birthday_message(name, age)
+        st.write(birthday_message)
+    else:
+        st.error("Mohon masukkan nama pacar untuk menampilkan ucapan ulang tahun.")
