@@ -1,5 +1,5 @@
 import streamlit as st
-from datetime import datetime
+from datetime import date
 
 # Membuat fungsi untuk menghasilkan ucapan ulang tahun untuk pacar
 def generate_birthday_message(name, birthdate, wish):
@@ -12,7 +12,7 @@ st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun Firnanda Valen ð
 name = st.text_input('Nama Pacar:')
 
 # Batas atas tanggal lahir hingga tahun 2000
-max_date = datetime(2000, 12, 31)
+max_date = date(2000, 1, 1)
 
 # Input tanggal lahir Anda
 birthdate = st.date_input('Tanggal Lahir Anda:', max_value=max_date)
