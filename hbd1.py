@@ -21,7 +21,7 @@ st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun ke Pacar 🎉</h
 st.subheader('Masukkan informasi pacar dan tanggal lahir:')
 
 # Input nama pacar
-pacar_name_option = st.radio('Pilih Nama Pacar:', ('Pacar Saya', 'Nama Pacar Saya'))
+pacar_name_option = st.radio('Pilih Nama Pacar:', ('aksa ganteng aja ', 'aksa ganteng banget'))
 if pacar_name_option == 'Nama Pacar Saya':
     pacar_name = st.text_input('Nama Pacar:')
 else:
