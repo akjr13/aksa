@@ -8,16 +8,16 @@ def generate_birthday_message(name, age, wish, future_wish):
 st.markdown("<h1 style='text-align: center;'>Ucapan Ulang Tahun Firnanda Valen 💖</h1>", unsafe_allow_html=True)
 
 # Input nama pacar
-name = st.text_input('Nama Pacar:')
+name = st.text_input('Nama Kamu:')
 
 # Input usia pacar
-age = st.number_input('Usia Pacar:', min_value=1, max_value=150, value=1)
+age = st.number_input('Usia kamu:', min_value=1, max_value=150, value=1)
 
 # Input keinginan dari Anda
-wish = st.text_area('Keinginan dari Anda:')
+wish = st.text_area('Keinginan dari kamu:')
 
 # Input harapan Anda untuk masa depan bersama
-future_wish = st.text_area('Harapan Anda untuk Masa Depan:')
+future_wish = st.text_area('Harapan kamu untuk Masa Depan:')
 
 # Tombol untuk menampilkan ucapan
 if st.button('Tampilkan Ucapan'):
