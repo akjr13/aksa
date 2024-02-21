@@ -2,10 +2,17 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Slider untuk rentang nilai x
 x_range = st.slider('Pilih rentang', 0.0, 2.0, (0.2, 0.5))
 st.write('nilai x:', x_range)
-y = st.slider('Set nilai', 0.0, 10.0, 5.0)
+
+# Slider untuk nilai y
+y = st.slider('Set nilai y', 0.0, 10.0, 5.0)
 st.write('nilai y:', y)
+
+# Slider untuk nilai integral
+integral_value = st.slider('Set nilai integral', 0.0, 100.0, 50.0)
+st.write('nilai integral:', integral_value)
 
 t = np.linspace(x_range[0] * np.pi, x_range[1] * np.pi, 100)
 u = np.sin(y * t)
