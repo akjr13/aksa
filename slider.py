@@ -2,21 +2,20 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = st.slider('Pilih rentang', 0.0, 2.0, (0.2, 0.5))
-st.write('nilai x:', x)
-y = st.slider('Set nilai', 0.0, 10.0, 5.0)
-st.write('nilai y:', y)
+x_range = st.slider('Pilih rentang', -10.0, 10.0, (-5.0, 5.0))
+st.write('Rentang x:', x_range)
 
-t = np.linspace(x[0] * np.pi, x[1] * np.pi, 100)
-u = np.sin(y * t)  # Mengubah urutan argumen pada np.sin() agar sesuai dengan dokumentasi numpy
-# st.write('nilai t:', t)
+x = np.linspace(x_range[0], x_range[1], 400)
+y1 = x**2 + 11*x - 19
+y2 = np.sin(x)
 
 fig, ax = plt.subplots(figsize=(16, 8))
-ax.plot(t, u, label='sin(t)', color='b')  # plotting sin(t) curve
-ax.set_ylabel("")
-ax.set_xlabel("t")
-ax.tick_params(axis='y', labelsize=20)
-ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha='right')
+ax.plot(x, y1, label='$x^2 + 11x - 19$', color='b')  # plot fungsi x^2 + 11x - 19
+ax.plot(x, y2, label='$\sin(x)$', color='r')  # plot fungsi sinus
+ax.set_ylabel("y")
+ax.set_xlabel("x")
+ax.tick_params(axis='y', labelsize=15)
 ax.tick_params(axis='x', labelsize=15)
-plt.grid(color='green', linestyle='-.', linewidth=.5)
+ax.legend(prop={'size': 15})
+plt.grid(color='green', linestyle='-.', linewidth=0.5)
 st.pyplot(fig)
