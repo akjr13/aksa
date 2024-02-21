@@ -9,13 +9,18 @@ x = np.linspace(x_range[0], x_range[1], 400)
 y1 = x**2 + 11*x - 19
 y2 = np.sin(x)
 
-fig, ax = plt.subplots(figsize=(16, 8))
-ax.plot(x, y1, label='$x^2 + 11x - 19$', color='b')  # plot fungsi x^2 + 11x - 19
-ax.plot(x, y2, label='$\sin(x)$', color='r')  # plot fungsi sinus
-ax.set_ylabel("y")
-ax.set_xlabel("x")
-ax.tick_params(axis='y', labelsize=15)
-ax.tick_params(axis='x', labelsize=15)
-ax.legend(prop={'size': 15})
-plt.grid(color='green', linestyle='-.', linewidth=0.5)
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10))
+
+ax1.plot(x, y1, label='$x^2 + 11x - 19$', color='b')  # plot fungsi x^2 + 11x - 19
+ax1.set_ylabel("y")
+ax1.legend(prop={'size': 12})
+ax1.grid(color='green', linestyle='-.', linewidth=0.5)
+
+ax2.plot(x, y2, label='$\sin(x)$', color='r')  # plot fungsi sinus
+ax2.set_xlabel("x")
+ax2.set_ylabel("y")
+ax2.legend(prop={'size': 12})
+ax2.grid(color='green', linestyle='-.', linewidth=0.5)
+
+plt.tight_layout()
 st.pyplot(fig)
