@@ -10,9 +10,13 @@ st.write('nilai y:', y)
 t = np.linspace(x_range[0] * np.pi, x_range[1] * np.pi, 100)
 u = np.sin(y * t)
 
-# Plot sin(t)
+# Compute integral using trapezoidal rule for sin(t)
+integral_u = np.trapz(u, t)
+
+# Plot sin(t) and its integral
 fig1, ax1 = plt.subplots(figsize=(8, 6))
 ax1.plot(t, u, label='sin(t)', color='b')
+ax1.fill_between(t, 0, u, alpha=0.2, color='b', label='Integral')
 ax1.set_ylabel("")
 ax1.set_xlabel("t")
 ax1.tick_params(axis='y', labelsize=12)
@@ -22,14 +26,16 @@ ax1.grid(color='green', linestyle='-.', linewidth=0.5)
 ax1.legend()
 st.pyplot(fig1)
 
+st.write(f'Integral of sin(t) (using trapezoidal rule): {integral_u}')
+
 # Calculate f(x) = x^2 + 11x - 19
 def f(x):
     return x**2 + 11*x - 19
 
 v = f(t)
 
-# Compute integral using trapezoidal rule
-integral = np.trapz(v, t)
+# Compute integral using trapezoidal rule for f(t)
+integral_v = np.trapz(v, t)
 
 # Plot f(t) and its integral
 fig2, ax2 = plt.subplots(figsize=(8, 6))
@@ -44,4 +50,4 @@ ax2.grid(color='green', linestyle='-.', linewidth=0.5)
 ax2.legend()
 st.pyplot(fig2)
 
-st.write(f'Integral (using trapezoidal rule): {integral}')
+st.write(f'Integral of f(t) (using trapezoidal rule): {integral_v}')
