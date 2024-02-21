@@ -10,9 +10,13 @@ st.write('nilai x:', x_range)
 y = st.slider('Set nilai y', 0.0, 10.0, 5.0)
 st.write('nilai y:', y)
 
-# Slider untuk nilai integral
-integral_value = st.slider('Set nilai integral', 0.0, 100.0, 50.0)
-st.write('nilai integral:', integral_value)
+# Slider untuk nilai integral dari sin(t)
+integral_value_u = st.slider('Set nilai integral sin(t)', 0.0, 100.0, 50.0)
+st.write(f'nilai integral sin(t): {integral_value_u}')
+
+# Slider untuk nilai integral dari f(t)
+integral_value_v = st.slider('Set nilai integral f(t)', 0.0, 100.0, 50.0)
+st.write(f'nilai integral f(t): {integral_value_v}')
 
 t = np.linspace(x_range[0] * np.pi, x_range[1] * np.pi, 100)
 u = np.sin(y * t)
@@ -34,6 +38,7 @@ ax1.legend()
 st.pyplot(fig1)
 
 st.write(f'Integral of sin(t) (using trapezoidal rule): {integral_u}')
+st.write(f'Nilai Integral yang dimasukkan: {integral_value_u}')
 
 # Calculate f(x) = x^2 + 11x - 19
 def f(x):
@@ -58,3 +63,4 @@ ax2.legend()
 st.pyplot(fig2)
 
 st.write(f'Integral of f(t) (using trapezoidal rule): {integral_v}')
+st.write(f'Nilai Integral yang dimasukkan: {integral_value_v}')
