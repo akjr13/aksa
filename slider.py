@@ -2,16 +2,16 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = st.slider('Pilih rentang', 0.0, 2.0, (.2, .5))
+x = st.slider('Pilih rentang', 0.0, 2.0, (0.2, 0.5))
 st.write('nilai x:', x)
-y = st.slider('Set nilai',0.0, 10.0, 5.0)
+y = st.slider('Set nilai', 0.0, 10.0, 5.0)
 st.write('nilai y:', y)
 
 integration_range = st.slider('Pilih rentang integrasi', x[0], x[1], (x[0], x[1]))
 st.write('Rentang Integrasi:', integration_range)
 
-t = np.linspace(x[0]*np.pi, x[1]*np.pi, 100)
-u = np.sin(y*t)
+t = np.linspace(x[0] * np.pi, x[1] * np.pi, 100)
+u = np.sin(y * t)
 
 # Calculate f(x) = x^2 + 11x - 19
 def f(x):
@@ -20,11 +20,11 @@ def f(x):
 v = f(t)
 
 # Compute integral using trapezoidal rule for u within integration_range
-mask_u = (t >= integration_range[0]*np.pi) & (t <= integration_range[1]*np.pi)
+mask_u = (t >= integration_range[0] * np.pi) & (t <= integration_range[1] * np.pi)
 integral_u = np.trapz(u[mask_u], t[mask_u])
 
 # Compute integral using trapezoidal rule for v within integration_range
-mask_v = (t >= integration_range[0]*np.pi) & (t <= integration_range[1]*np.pi)
+mask_v = (t >= integration_range[0] * np.pi) & (t <= integration_range[1] * np.pi)
 integral_v = np.trapz(v[mask_v], t[mask_v])
 
 fig1, ax1 = plt.subplots(figsize=(16, 8))
@@ -52,5 +52,5 @@ plt.legend()  # Show legend for fig2
 st.pyplot(fig1)
 st.pyplot(fig2)
 
-st.write(f'Integral (using trapezoidal rule) of sin(t) within selected range: {integral_u}')
-st.write(f'Integral (using trapezoidal rule) of f(t) within selected range: {integral_v}')
+st.write(f'Integral (using trapezoidal rule) of sin(t) within selected range {integration_range}: {integral_u}')
+st.write(f'Integral (using trapezoidal rule) of f(t) within selected range {integration_range}: {integral_v}')
