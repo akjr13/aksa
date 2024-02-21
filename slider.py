@@ -23,7 +23,6 @@ u = np.sin(y * t)
 
 # Compute integral using trapezoidal rule for sin(t)
 integral_u = np.trapz(u, t)
-integral_u = integral_value_u
 
 # Plot sin(t) and its integral
 fig1, ax1 = plt.subplots(figsize=(8, 6))
@@ -49,7 +48,6 @@ v = f(t)
 
 # Compute integral using trapezoidal rule for f(t)
 integral_v = np.trapz(v, t)
-integral_v = integral_value_v
 
 # Plot f(t) and its integral
 fig2, ax2 = plt.subplots(figsize=(8, 6))
