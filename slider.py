@@ -2,25 +2,34 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-x_range = st.slider('Pilih rentang', -10.0, 10.0, (-5.0, 5.0))
-st.write('Rentang x:', x_range)
+x = st.slider('Pilih rentang', 0.0, 2.0, (.2, .5))
+st.write('nilai x:', x)
+y = st.slider('Set nilai',0.0, 10.0, 5.0)
+st.write('nilai y:', y)
 
-x = np.linspace(x_range[0], x_range[1], 400)
-y1 = x**2 + 11*x - 19
-y2 = np.sin(x)
+t = np.linspace(x[0]*np.pi, x[1]*np.pi, 100)
+u = np.sin(y*t)
 
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10))
+# Calculate f(x) = x^2 + 11x - 19
+def f(x):
+    return x**2 + 11*x - 19
 
-ax1.plot(x, y1, label='$x^2 + 11x - 19$', color='b')  # plot fungsi x^2 + 11x - 19
-ax1.set_ylabel("y")
-ax1.legend(prop={'size': 12})
-ax1.grid(color='green', linestyle='-.', linewidth=0.5)
+v = f(t)
 
-ax2.plot(x, y2, label='$\sin(x)$', color='r')  # plot fungsi sinus
-ax2.set_xlabel("x")
-ax2.set_ylabel("y")
-ax2.legend(prop={'size': 12})
-ax2.grid(color='green', linestyle='-.', linewidth=0.5)
+# Compute integral using trapezoidal rule
+integral = np.trapz(v, t)
 
-plt.tight_layout()
+fig, ax = plt.subplots(figsize=(16, 8))
+ax.plot(t, u, label='sin(t)', color='b')  # Plotting sin(t) curve
+ax.plot(t, v, label='f(t)', color='r')     # Plotting f(t) curve
+ax.fill_between(t, 0, v, alpha=0.2, color='r', label='Integral')  # Fill the area under the curve for integral
+ax.set_ylabel("")
+ax.set_xlabel("t")
+ax.tick_params(axis='y', labelsize=20)
+ax.set_xticklabels(ax.get_xticklabels(), rotation=30, ha='right')
+ax.tick_params(axis='x', labelsize=15)
+plt.grid(color='green', linestyle='-.', linewidth=.5)
+plt.legend()  # Show legend
 st.pyplot(fig)
+
+st.write(f'Integral (using trapezoidal rule): {integral}')
